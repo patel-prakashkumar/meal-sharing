@@ -55,7 +55,7 @@ router.delete("/:id", async (req, res) => {
         if (!deleteData) {
             res.status(404).json({ error: "Id doesn't exit in table" })
         } else {
-            res.json(deleteData)
+            res.json({ "message": "Deleted meal" , Key: deleteData})
         }
     } catch (error) {
         res.status(409).json({ error: "unsuccessful Delete request" });
