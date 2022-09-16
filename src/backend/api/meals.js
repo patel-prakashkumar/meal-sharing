@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     // knex syntax for selecting things. Look up the documentation for knex for further info
     const findTableData = await knex.select().table('meal')
     if (findTableData.length === 0) {
-      res.status(404).json("Table data not available")
+      res.status(404).json("Table data is not available")
     } else {
       res.json(findTableData);
     }
@@ -16,9 +16,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+/* router.post("/", async (req, res) => {
   try {
     const insertData = await knex('meal').insert({ title: 'Lunch', description: 'Full Lunch', location: 'vallenbæk', when: '2022-09-17', max_reservations: 5, price: 200, created_date: '2022-09-17'});
+    res.json(insertData);
+  } catch (error) {
+    res.status(403).json({ error: "Failed to Insert data in Table" });
+  }
+}) */
+
+// Add Endpoint with req.body 
+router.post("/", async (req, res) => {
+  try {
+    const insertData = await knex('meal').insert({ title: req.body.title, description: req.body.description, location: req.body.location, when: req.body.when, max_reservations: req.body.max_reservations, price: req.body.price, created_date: req.body.created_date});
     res.json(insertData);
   } catch (error) {
     res.status(403).json({ error: "Failed to Insert data in Table" });
@@ -30,7 +40,7 @@ router.get("/:id", async (req, res) => {
     // knex syntax for selecting things. Look up the documentation for knex for further info
     const data = await knex.select().table('meal').where('id', req.params.id);
     if (data.length === 0) {
-      res.status(404).json("Id is not avialble in database")
+      res.status(404).json("Id is not available in database")
     } else {
       res.json(data);
     }
@@ -52,7 +62,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const deleteData = await knex('meal').where('id', req.params.id).del();
    if (!deleteData) {
-      res.status(404).json({ error: "Id doesn't exit in table" })
+      res.status(404).json({ error: "Id doesn't exist in table" })
     } else {
       res.json({ "message": "Deleted meal" , Key: deleteData})
     }
