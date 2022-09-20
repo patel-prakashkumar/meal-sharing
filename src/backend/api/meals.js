@@ -15,16 +15,6 @@ router.get("/", async (req, res) => {
     res.status(404).json({ error: "Bad Get Request" });
   }
 });
-
-/* router.post("/", async (req, res) => {
-  try {
-    const insertData = await knex('meal').insert({ title: 'Lunch', description: 'Full Lunch', location: 'vallenbæk', when: '2022-09-17', max_reservations: 5, price: 200, created_date: '2022-09-17'});
-    res.json(insertData);
-  } catch (error) {
-    res.status(403).json({ error: "Failed to Insert data in Table" });
-  }
-}) */
-
 // Add Endpoint with req.body 
 router.post("/", async (req, res) => {
   try {
