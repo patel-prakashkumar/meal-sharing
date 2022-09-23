@@ -46,7 +46,6 @@ router.get("/", async (req, res) => {
 router.get("/", async (req, res) => {
   const dateBefore = req.query.dateAfter;
   const date = new Date(dateBefore);
-  console.log(date)
   if (!date) {
     res.status(403).json('Please Enter Date')
   } else {
@@ -76,6 +75,7 @@ router.get("/", async (req, res) => {
 router.get("/", async (req, res) => {
   let mealList = knex.select("*").from("meal")
   const sortKey = req.query.sort_key;
+  // @ts-ignore
   const orderBy = sortKey.toString()
   if (orderBy.length > 0) {
     if (!sortKey) {
@@ -106,6 +106,7 @@ router.get("/", async (req, res) => {
   let mealList = knex.select("*").from("meal")
   const sortKey = req.query.sort_key;
   const sortDir = req.query.sort_dir;
+  // @ts-ignore
   const orderBy = sortKey.toString()
   if (orderBy.length > 0) {
     if (!sortKey && !sortDir) {
