@@ -13,6 +13,23 @@ router.get("/", async (req, res) => {
     res.json(meals)
   }
 });
+
+router.get("/xyz", async (req, res) => {
+  const mealsGuest = await knex.raw(`select * ,(max_reservations)-(number_of_guests) AS spots from meal inner join reservation on meal.id = reservation.meal_id where ((max_reservations)-(number_of_guests)) > 0`);
+  let x = req.query.availableReservations;
+  if (x != "true") {
+    res.status(403).json("Reservation spots are not available in meal")
+  }
+  else {
+    if (mealsGuest.spots <= 0) {
+      res.status(403).json("error")
+    }
+    else {
+      res.status(201).json({Message: "Reservation meals still have spots left in meal",Result : mealsGuest});
+    }
+  }
+});
+
 router.get("/", async (req, res) => {
   const title = req.query.title;
   console.log(title)
@@ -72,7 +89,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/test", async (req, res) => {
   let mealList = knex.select("*").from("meal")
   const sortKey = req.query.sort_key;
   // @ts-ignore
