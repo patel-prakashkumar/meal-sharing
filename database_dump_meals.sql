@@ -1,3 +1,4 @@
+-- Active: 1660903523654@@127.0.0.1@3306@meal-sharing
 CREATE DATABASE  IF NOT EXISTS `meal-sharing`;
 USE `meal-sharing`;
 --
