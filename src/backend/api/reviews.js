@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const reviewList = await knex('review').select('*')
         if (!reviewList.length) {
-            res.status(404).json("There are not available any reviews")
+            res.json({mesage :"There are not available any reviews"})
         } else {
             res.json(reviewList);
         }
@@ -20,9 +20,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const reviewList = await knex.from('review').select('*').where('meal_id', id);
+        const reviewList = await knex.from('review').select('*').where('id', id);
         if (!reviewList.length) {
-            res.status(404).json("There are not available any reviews")
+            res.status(404).json({message : "There are not available any reviews"})
         } else {
             res.json(reviewList);
         }
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
             created_date: req.body.created_date,
         });
         if (!insertData.length) {
-            res.status(403).json("Data is not inserted in Table")
+            res.status(403).json({error : "Data is not inserted in Table"})
         } else {
             res.status(200).json({ message: "Data inserted in table", key: insertData })
         }
@@ -72,7 +72,7 @@ router.put("/:id", async (req, res) => {
         if (updateData === 0) {
             res.status(403).json("There is error update request rejected")
         } else {
-            res.status(201).json({ message: "Updated data in table", key: updateData })
+            res.status(200).json({ message: "Updated data in table", key: updateData })
         }
     } catch (error) {
         throw res.status(403).json({ error: "There is error in Page try again" });
@@ -86,7 +86,7 @@ router.delete("/:id", async (req, res) => {
         if (deleteData === 0) {
             res.status(403).json("There is error delete request rejected")
         } else {
-            res.status(201).json({ message: "Deleted data in table", key: deleteData})
+            res.status(200).json({ message: "Deleted data in table", key: deleteData})
         }
     } catch (error) {
         throw res.status(403).json({ error: "There is error in Page try again" });
