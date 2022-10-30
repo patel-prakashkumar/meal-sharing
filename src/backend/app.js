@@ -21,57 +21,7 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealsRouter);
-<<<<<<< HEAD
 router.use("/reservations", reservationsRouter);
-=======
-app.get("/my-route", (req, res) => { res.send("Hi friend") });
-
-app.get('/future-meals', async(req, res)=> {
-  const [row] = await knex.raw('SELECT * FROM Meal WHERE `when` > now()')
-  if (row.length === 0) {
-    res.status(404).json({ "Requested Meal ": "Not Availble" })
-  }
-  else {
-    res.json(row)
-  }
-});
-app.get('/past-meals', async(req, res)=> {
-  const [row] = await knex.raw('SELECT * FROM Meal WHERE `when` < now()')
-  if (row.length === 0) {
-    res.status(404).json({ "Requested Meal ": "Not Availble" })
-  }
-  else {
-    res.json(row)
-  }
-});
-app.get('/all-meals', async(req, res)=> {
-  const [row] = await knex.raw('SELECT * FROM Meal ORDER BY `id` ASC')
-  if (row.length === 0) {
-    res.status(404).json({"Requested Meal ": "Not Available"  })
-  }
-  else {
-    res.json(row)
-  }''
-});
-app.get('/first-meals', async(req, res)=> {
-  const [row] = await knex.raw('SELECT * FROM Meal ORDER BY `id` LIMIT 1')
-  if (row.length === 0) {
-    res.status(404).json({"Requested Meal ": "Not Available"  })
-  }
-  else {
-    res.json(row)
-  }''
-});
-app.get('/last-meals', async(req, res)=> {
-  const [row] = await knex.raw('SELECT * FROM Meal ORDER BY `id` DESC LIMIT 1')
-  if (row.length === 0) {
-    res.status(404).json({"Requested Meal ": "Not Available"  })
-  }
-  else {
-    res.json(row)
-  }
-});
->>>>>>> 63b38510a62c7b1935e375adb4b81a99e62f0577
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
