@@ -10,6 +10,7 @@ function App() {
       </Route>
       <Route exact path="/lol">
         <p>lol</p>
+        <p>Its prakash</p>
       </Route>
       <Route exact path="/test-component">
         <TestComponent></TestComponent>
