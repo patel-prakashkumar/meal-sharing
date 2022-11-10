@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    padding: 10px;
+}
+.about-content{
+    padding: 10px;
+    text-align: justify;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    color: rgb(80, 79, 79);
+    
+}
+img{
+    margin-top: 20px;
+    width: 100%; 
+    height: auto; 
+}
+
