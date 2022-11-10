@@ -1,0 +1,52 @@
+.sticky{
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #f8f9fa;
+    color: #495057;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+
+}
+.nav{
+
+font-weight: 800;
+
+}
+ul{
+    display: flex;
+    list-style: none;
+}
+li{
+    padding: 2px;
+    margin: 0 5px 0 5px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+.logo{
+    width: 100px;
+    height: auto;
+    opacity: 0.8;
+}
+li:hover{
+    background-color: #999;
+}
+
+@media screen and (max-width: 750px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    ul{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    }

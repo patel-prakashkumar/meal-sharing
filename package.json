@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Website for sharing meals",
   "engines": {
-    "node": "16.17.0"
+    "node": "18.12.1"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "npm run build && node ./src/backend/server",
-    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack --mode production",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && npm run build && node ./src/backend/server",
+    "client": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon ./src/backend/server",
     "dev": "nodemon app.js"
   },

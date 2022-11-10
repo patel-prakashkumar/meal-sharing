@@ -1,0 +1,23 @@
+.wrapper-review{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 250px;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    box-sizing: content-box;
+    background-color: #e5e5e5;
+    box-shadow: 5px 5px #FFF6EA;
+   
+}
+.review{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}

@@ -26,7 +26,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
         use: {
           loader: 'url-loader',
           options: { limit: 100000 }
@@ -38,7 +38,6 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   devServer: {
-    static: '/',
     historyApiFallback: true,
     port: parseInt(process.env.CLIENT_PORT, 10),
     open: process.env.OPEN_BROWSER === 'true' ? true : false,
